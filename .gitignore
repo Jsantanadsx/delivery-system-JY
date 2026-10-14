@@ -1,0 +1,14 @@
+.gradle/
+build/
+**/build/
+**/data/
+**/*.mv.db
+**/*.trace.db
+.idea/
+.vscode/
+*.iml
+.env
+.env.*
+!.env.example
+*.log
+.gradle-local/

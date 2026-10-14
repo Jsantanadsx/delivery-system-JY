@@ -1,0 +1,39 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: order-service
+  datasource:
+    url: jdbc:h2:file:./data/orderdb;DB_CLOSE_ON_EXIT=FALSE;LOCK_TIMEOUT=120000
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY:demo-disabled}
+      base-url: ${OPENAI_BASE_URL:https://api.openai.com}
+      chat:
+        model: ${OPENAI_MODEL:gpt-4o-mini}
+        temperature: 0.2
+      embedding:
+        enabled: false
+app:
+  ai:
+    enabled: ${APP_AI_ENABLED:false}
+  rate-limit:
+    enabled: ${RATE_LIMIT_ENABLED:false}
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
